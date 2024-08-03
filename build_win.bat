@@ -1,0 +1,1 @@
+flutter build windows --release --obfuscate --split-debug-info=debug_symbol_win
