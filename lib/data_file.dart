@@ -139,7 +139,7 @@ Future<String?> getDataFromUrl(String url) async {
 
 //////// 마크
 
-void copyBasicIfNeed() {
+Future<void> copyBasicIfNeed() async {
   // 마크 루트 폴더가 없으면 기본 파일 복사
   final mcRoot = File('$minecraftPath/launcher_profiles.json');
 
@@ -147,7 +147,8 @@ void copyBasicIfNeed() {
     mcRoot.createSync(recursive: true);
 
     copyFiles(
-      ['launcher_profiles.json', 'options.txt'].map((e) => '$builtinDataPath/$e'),
+      ['launcher_profiles.json', 'options.txt']
+          .map((e) => '${kReleaseMode ? 'data/flutter_assets/' : ''}$builtinDataPath/$e'),
       minecraftPath,
     );
   }
